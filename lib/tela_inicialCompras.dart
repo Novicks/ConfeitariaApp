@@ -6,10 +6,8 @@ class TelaIncialCompras extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return Column(
-      children: [
-
-      ],
+    return Center(
+      child: const Text('compras'),
     );
   }
 }

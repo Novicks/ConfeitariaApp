@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TelaCadastro extends StatelessWidget{
-  TelaCadastro({super.key});
+class TelaCadastro extends StatelessWidget {
+  const TelaCadastro({super.key});
 
   @override
-  Widget build(BuildContext context){
-    return Scaffold(
-
-    );
+  Widget build(BuildContext context) {
+    return Scaffold();
   }
 }

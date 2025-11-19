@@ -1,6 +1,6 @@
-# confeitaria_app
+# confeitaria1
 
-Aplicativo de E-Comerce de uma confeitaria como trabalhoo de conclusão de curso
+A new Flutter project.
 
 ## Getting Started
 

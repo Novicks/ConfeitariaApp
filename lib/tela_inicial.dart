@@ -22,7 +22,6 @@ class _TelaInicialState extends State<TelaInicial> {
   Widget build(BuildContext context){
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.green,
         onTap: (index){
           setState(() {
             indexBar = index;
