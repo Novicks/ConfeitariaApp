@@ -11,6 +11,7 @@ class TelaIncialOferta extends StatefulWidget{
 class _TelaIncialOfertaState extends State<TelaIncialOferta> {
   final CarouselController controllerCarousel = CarouselController(initialItem: 1);
   final SearchController _searchController = SearchController();
+  final PageController _test = PageController(initialPage: 1, viewportFraction: 0.5);
   // alterar para lista produtos atráves do banco de dados conforme digitado
   final List<String> _produtos = ['bolo','torta', 'salgado', 'etc'];
   final List<String> _imagensProv = ['https://picsum.photos/200/300','https://picsum.photos/200/300', 'https://picsum.photos/200/300', 'https://picsum.photos/200/300', 'https://picsum.photos/200/300'];
@@ -21,6 +22,7 @@ class _TelaIncialOfertaState extends State<TelaIncialOferta> {
       children: [
         // container usuario é marca
         Container(
+          //width: MediaQuery.of(context).size.width*0.9,
           padding: const EdgeInsets.all(24),
           child: Row(
           spacing: 20,
@@ -35,7 +37,7 @@ class _TelaIncialOfertaState extends State<TelaIncialOferta> {
             Text('Seja bem vindo', style: TextStyle(fontSize: 24)),
             IconButton(iconSize: 50,onPressed: (){}, icon: Icon(Icons.notifications))
           ],
-        ),
+        ), 
       ),
         //container barra de pesquisa
         Container(
@@ -107,16 +109,65 @@ class _TelaIncialOfertaState extends State<TelaIncialOferta> {
             ],
           ),
         ),
-        Container(
-          height: 80,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              Card(),
-              SizedBox(width: 12),
-            ],
-          ),
-        )
+        Divider(height: 1, color: Colors.black,),
+        SizedBox(height: 20,),
+        // List view de categorias com botão tipo chips sempre defini altura se não o list view buga.
+
+        SizedBox(height: 40, child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            InputChip(label: Text('Botão 1'), onPressed: (){},),
+            InputChip(label: Text('Botão 2'), onPressed: (){},),
+            InputChip(label: Text('Botão 3'), onPressed: (){},),
+            InputChip(label: Text('Botão 4'), onPressed: (){},),
+            InputChip(label: Text('Botão 5'), onPressed: (){},),
+            InputChip(label: Text('Botão 6'), onPressed: (){},),
+          ],
+        ),
+        ),
+        SizedBox(height: 50,),
+        // List view que contera os produtos em forma de apresentação rotativa.
+        //teste apresentação de produtos 2
+        /*SizedBox(height: 200,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            // card esquerda imitando o anterior
+            Transform.scale(
+              scale: 0.8,
+              child: Positioned(left: 40,child: Card(
+                color: Colors.grey[300],
+                child: SizedBox(width: 120, height: 100,),
+              )),
+            ),
+            Card(
+              elevation: 6,
+              child: SizedBox(height: 220, width: 160,),
+            ),
+            Transform.scale(
+              scale: 0.8,
+              child: Positioned(right: 40,child: Card(
+                color: Colors.grey[300],
+                child: SizedBox(width: 120, height: 100,),
+              )),
+            ),
+          ],
+        ),
+        )*/
+        //teste apresentação de produtos 1 // melhor somente ajustar para ficar dinamico
+        SizedBox(height: 150, child: PageView.builder(
+          controller: _test,
+          itemCount: 3,
+          itemBuilder: (_, index){
+            return Transform.scale(
+              scale: index == 1 ? 1.0 : 0.8,
+              child: Card(
+                color: Colors.red,
+                child: SizedBox(width: 50,),
+              ),
+            );
+          },
+        ),)
       ],
     );
   }

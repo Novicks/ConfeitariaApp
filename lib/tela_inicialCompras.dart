@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TelaIncialCompras extends StatelessWidget {
+class TelaIncialCompras extends StatelessWidget{
   TelaIncialCompras({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Center(child: const Text('compras'));
+  Widget build(BuildContext context){
+    return Center(
+      child: const Text('compras'),
+    );
   }
 }
