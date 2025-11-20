@@ -1,3 +1,5 @@
+import 'package:confeitaria_app/SplashScreen.dart';
+import 'package:confeitaria_app/tela_cadastro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -39,19 +41,21 @@ class TelaLogin extends StatelessWidget {
 
                 if(sucesso){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TelaHome())
+                      MaterialPageRoute(builder: (context) => SplashScreen())
                   );
                 }else {
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text("Email ou senha inválidos!!"))
                   );
-                }
 
-              }, child: const Text('logar')),
+              }
+                child: const Text('logar');
               ElevatedButton(onPressed: ()=>{
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>TelaCadCliente() ))
-              }, child: const Text("Cadastrar Cliente"))
-            ],
+                Navigator.push(context, MaterialPageRoute(builder: (context) = TelaCadastro();
+
+              }
+                    child: const Text("Cadastro")
+            , child: null,
           ),
         )
     );
