@@ -23,6 +23,7 @@ class _TelaIncialOfertaState extends State<TelaIncialOferta> {
         // container usuario é marca
         Container(
           //width: MediaQuery.of(context).size.width*0.9,
+          // mudar para metodo que identifica se o usuario está logado ou não
           padding: const EdgeInsets.all(24),
           child: Row(
           spacing: 20,
@@ -41,7 +42,7 @@ class _TelaIncialOfertaState extends State<TelaIncialOferta> {
       ),
         //container barra de pesquisa
         Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
           // ajustar barra de pesquisa
           child: SearchAnchor(
             searchController: _searchController,
