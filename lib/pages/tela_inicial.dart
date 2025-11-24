@@ -1,6 +1,6 @@
-import 'package:confeitaria_app/tela_incialConta.dart';
-import 'package:confeitaria_app/tela_incialOfertas.dart';
-import 'package:confeitaria_app/tela_inicialCompras.dart';
+import 'package:confeitaria_app/pages/tela_incialConta.dart';
+import 'package:confeitaria_app/pages/tela_incialOfertas.dart';
+import 'package:confeitaria_app/pages/tela_inicialCompras.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

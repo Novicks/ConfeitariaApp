@@ -1,18 +1,13 @@
 import 'package:confeitaria_app/SplashScreen.dart';
-import 'package:confeitaria_app/tela_cadastro.dart';
+import 'package:confeitaria_app/pages/tela_cadastro.dart';
+import 'package:confeitaria_app/pages/tela_incialOfertas.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TelaLogin extends StatelessWidget {
   TelaLogin({super.key});
-/*Cliente c  = cliente(
-    nome: 'admin',
-        login: 'email',
-        senha: '#senha',
-        codigo: 1
-  );*/
 
-  final TextEditingController emailController= TextEditingController();
+  final TextEditingController ClienteController= TextEditingController();
   final TextEditingController senhaController= TextEditingController();
 
   @override
@@ -35,30 +30,19 @@ class TelaLogin extends StatelessWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(onPressed: () async {
-
-                final sucesso = await ClienteDAO.autenticar(emailController.text, senhaController.text);
-
-
-                if(sucesso){
+                final sucesso = await ClienteDAO.autenticar(ClienteController.text, senhaController.text);
+                if (sucesso) {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SplashScreen())
+                      MaterialPageRoute(builder: (context) => TelaIncialOferta())
                   );
-                }else {
+                } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text("Email ou senha inválidos!!"))
                   );
-
-              }
-                child: const Text('logar');
-              ElevatedButton(onPressed: ()=>{
-                Navigator.push(context, MaterialPageRoute(builder: (context) = TelaCadastro();
-
-              }
-                    child: const Text("Cadastro")
-            , child: null,
-          ),
-        )
-    );
-  }
+                }
+              },child: const Text('logar')),
+        ])
+      ));
+    }
 }
 

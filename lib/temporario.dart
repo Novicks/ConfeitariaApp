@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:confeitaria_app/tela_cadastro.dart';
-import 'package:confeitaria_app/tela_inicial.dart';
-import 'package:confeitaria_app/tela_login.dart';
-import 'package:confeitaria_app/tela_pagamento.dart';
-import 'package:confeitaria_app/tela_produto.dart';
+import 'package:confeitaria_app/pages/tela_cadastro.dart';
+import 'package:confeitaria_app/pages/tela_inicial.dart';
+import 'package:confeitaria_app/pages/tela_login.dart';
+import 'package:confeitaria_app/pages/tela_pagamento.dart';
+import 'package:confeitaria_app/pages/tela_produto.dart';
 
 class Temp extends StatelessWidget {
   const Temp({super.key});

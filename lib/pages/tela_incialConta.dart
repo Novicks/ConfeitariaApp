@@ -5,7 +5,7 @@ class TelaIncialConta extends StatelessWidget{
   TelaIncialConta({super.key});
 
   @override
-  Widget build(B    uildContext context){
+  Widget build(BuildContext context){
     return Center(
       child: SafeArea(child: Container(
         padding: EdgeInsets.symmetric(vertical: 10),
