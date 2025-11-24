@@ -30,7 +30,7 @@ class TelaLogin extends StatelessWidget {
               ),
               SizedBox(height: 20),
               ElevatedButton(onPressed: () async {
-                final sucesso = await ClienteDAO.autenticar(ClienteController.text, senhaController.text);
+               /* final sucesso = await ClienteDAO.autenticar(ClienteController.text, senhaController.text);
                 if (sucesso) {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => TelaIncialOferta())
@@ -39,7 +39,7 @@ class TelaLogin extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text("Email ou senha inválidos!!"))
                   );
-                }
+                }*/
               },child: const Text('logar')),
         ])
       ));

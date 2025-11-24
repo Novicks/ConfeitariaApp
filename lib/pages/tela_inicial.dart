@@ -1,6 +1,7 @@
 import 'package:confeitaria_app/pages/tela_incialConta.dart';
 import 'package:confeitaria_app/pages/tela_incialOfertas.dart';
 import 'package:confeitaria_app/pages/tela_inicialCompras.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,22 +19,24 @@ class _TelaInicialState extends State<TelaInicial> {
     TelaIncialCompras(),
     TelaIncialConta()
   ];
+  final items = [
+    Icon(Icons.home, size: 30,),
+    Icon(Icons.shopping_cart, size: 30,),
+    Icon(Icons.menu_rounded, size: 30,)
+  ];
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (index){
-          setState(() {
-            indexBar = index;
-          });
-        },
-          currentIndex: indexBar,
-          items: const[
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.menu_rounded), label: ''),
-      ]),
-      body: listadePaginas[indexBar]
+      body: listadePaginas[indexBar],
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.transparent,
+        height: 60,
+        index: indexBar,
+        items: items,
+        onTap: (index) => setState(() {
+          this.indexBar = index;
+        }),
+      )
     );
   }
 }
