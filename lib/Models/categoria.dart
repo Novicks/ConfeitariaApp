@@ -1,53 +1,21 @@
-//categoria
-int id;
-String nome;
-String descricao;
-String imagemUrl; // opcional: foto da categoria (bolo, doces, tortas…)
-
 class Categoria {
-  int _id = 0;
-  String _nome = "";
-  String _descricao = "";
-  String _imagemUrl = "";
+  int? _id;
+  String? _nome;
+  String? _descricao;
 
-  Categoria({
-    required int id,
-    required String nome,
-    required String descricao,
-    String imagemUrl = "",
-  }) {
+  Categoria({int? id, String? nome, String? descricao}) {
     _id = id;
     _nome = nome;
     _descricao = descricao;
-    _imagemUrl = imagemUrl;
   }
 
   // Getters
-
-  int get id => _id;
-  String get nome => _nome;
-  String get descricao => _descricao;
-  String get imagemUrl => _imagemUrl;
-
+  int? get id => _id;
+  String? get nome => _nome;
+  String? get descricao => _descricao;
 
   // Setters
-
-  set id(int value) {
-    if (value > 0) {
-      _id = value;
-    }
-  }
-
-  set nome(String value) {
-    if (value.isNotEmpty) {
-      _nome = value;
-    }
-  }
-
-  set descricao(String value) {
-    _descricao = value;
-  }
-
-  set imagemUrl(String value) {
-    _imagemUrl = value;
-  }
+  set id(int? id) => _id = id;
+  set nome(String? nome) => _nome = nome;
+  set descricao(String? descricao) => _descricao = descricao;
+}

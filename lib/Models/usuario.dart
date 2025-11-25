@@ -1,53 +1,43 @@
+class Usuario {
+  int? _codigo;
+  String? _nome;
+  String? _email;
+  String? _senha;
+  String? _telefone;
+  int? _cpf;
 
+  Usuario({
+    int? codigo,
+    String? nome,
+    String? email,
+    String? senha,
+    String? telefone,
+    int? cpf,
+  }) {
+    _codigo = codigo;
+    _nome = nome;
+    _email = email;
+    _senha = senha;
+    _telefone = telefone;
+    _cpf = cpf;
+  }
+  int? get codigo => _codigo;
+  String? get nome => _nome;
+  String? get email => _email;
+  String? get senha => _senha;
+  String? get telefone => _telefone;
+  int? get cpf => _cpf;
 
-Pasta models
-
-Class Usuario{
-int? _codigo;
-String? _nome;
-String? _email;
-String? _senha;
-String? _telefone;
-int? _cpf;
-
-//construtor
-Usuario
-int? codigo;
-int? cpf;
-String? nome, String? email, String? senha, String? telefone, int?cpf}){
-_codigo = codigo;
-_nome = nome;
-_email = email;
-_senha = senha;
-_telefone = telefone;
-_cpf = cpf;
+  set cpf(int? cpf) => _cpf = cpf;
+  set senha(String? senha) => _senha = senha;
+  set telefone(String? telefone) => _telefone = telefone;
+  set codigo(int? codigo) => _codigo = codigo;
+  set nome(String? nome) => _nome = nome;
+  set email(String? email) {
+    if (email != null && email.contains('@')) {
+      _email = email;
+    } else {
+      print('Email inválido');
+    }
+  }
 }
-//Getter e Setters
-//exemplo tradicional de getter
-String get email{
-  return _senha;
-}
-int? get codigo => codigo;
-String? get nome => nome;
-String? get email => email;
-String? get senha => senha;
-String? get telefone => telefone;
-int? cpf => cpf
-
-}
-//setters tradiicional
-set email(String? senha){
-  _senha = senha;
-
-}
-//setters estilo dart
-set codigo(int? codigo) =>  _codigo = codigo;
-set nome(String? nome)=> _nome = nome;
-set email(String? email)=> _email = email;
-set senha(String? senha)=> _senha = senha;
-set telefone(String? telefone) => _telefone = telefone;
-set cpf(int? cpf) => _cpf = cpf;
-
-
-
-

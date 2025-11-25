@@ -1,46 +1,56 @@
-Class Endereco{
-int? codigo
-int? codigo Cliente
-String? Endereco
-int? CEP
-String? Rua
-int? Numero
-String? complemento
-String? Bairro
-String? Cidade
-string? Estado
+class Endereco {
+  int? _codigo_endereco;
+  String? _endereco;
+  int? _cep;
+  String? _rua;
+  int? _numero;
+  String? _complemento;
+  String? _bairro;
+  String? _cidade;
+  String? _estado;
 
-Endereco({
-  this.id,
-  required this.rua,
-  required this.numero,
-  required this.bairro,
-  required this.cidade,
-  required this.estado,
-  required this.cep,
-  this.complemento = "",
-});
+  Endereco({
+    int? codigo_endereco,
+    String? endereco,
+    int? cep,
+    String? rua,
+    int? numero,
+    String? complemento,
+    String? bairro,
+    String? cidade,
+    String? estado,
+  }) {
+    _codigo_endereco = codigo_endereco;
+    _rua = rua;
+    _numero = numero;
+    _bairro = bairro;
+    _cidade = cidade;
+    _estado = estado;
+    _cep = cep;
+    _complemento = complemento;
+    _endereco = endereco;
+  }
 
+  // Getters
+  int? get codigo_endereco => _codigo_endereco;
+  String? get endereco => _endereco;
+  String? get rua => _rua;
+  int? get numero => _numero;
+  String? get complemento => _complemento;
+  String? get bairro => _bairro;
+  String? get cidade => _cidade;
+  String? get estado => _estado;
+  int? get cep => _cep;
 
-// Getters
-int? get id => _id;
-String get rua => _rua;
-String get numero => _numero;
-String get bairro => _bairro;
-String get cidade => _cidade;
-String get estado => _estado;
-String get cep => _cep;
-String get complemento => _complemento;
-
-// Setters
-set id(int? value) => _id = value;
-set rua(String value) => _rua = value;
-set numero(String value) => _numero = value;
-set bairro(String value) => _bairro = value;
-set cidade(String value) => _cidade = value;
-set estado(String value) => _estado = value;
-set cep(String value) => _cep = value;
-set complemento(String value) => _complemento = value;
-
-
+  // Setters
+  set codigo_endereco(int? codigo_endereco) =>
+      _codigo_endereco = codigo_endereco;
+  set endereco(String? endereco) => _endereco = endereco;
+  set rua(String? rua) => _rua = rua;
+  set numero(int? numero) => _numero = numero;
+  set complemento(String? complemento) => _complemento = complemento;
+  set bairro(String? bairro) => _bairro = bairro;
+  set cidade(String? cidade) => _cidade = cidade;
+  set estado(String? estado) => _estado = estado;
+  set cep(int? cep) => _cep = cep;
 }

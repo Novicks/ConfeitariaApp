@@ -1,53 +1,38 @@
+class Produto {
+  int? _codigo_do_produto;
+  int? _codigo_categoria;
+  String? _nome;
+  String? _descricao;
+  int? _preco;
 
-Class Produto;
-int? Codigo do produto;
-int? Codigo Categoria;
-String? Nome;
-String? Descricao;
-int? Preco;
+  //construtor
+  Produto({
+    int? codigo_do_produto,
+    int? codigo_categoria,
+    String? nome,
+    String? descricao,
+    int? preco,
+  }) {
+    _codigo_do_produto = codigo_do_produto;
+    _codigo_categoria = codigo_categoria;
+    _nome = nome;
+    _descricao = descricao;
+    _preco = preco;
+  }
 
-//Construtor
+  //getters tradicional
+  int? get codigo_do_produto => _codigo_do_produto;
+  int? get codigo_categoria => _codigo_categoria;
+  int? get preco => _preco;
+  String? get nome => _nome;
+  String? get descricao => _descricao;
 
-Produto({
-int? codigo produto;
-int? codigo categoria;
-String? nome, String descricao;
-int? preco;
-
-int? get codigo produto => codigo produto;
-int? get codigo categoria => codigo categoria
-int? preco
-String? nome, String? descricao({
-_codigo do produto = codigo do produto;
-_codigo da categoria = codigo da categoria;
-_nome = nome;
-_descricao = descricao;
-_preco = preco;
-
-})
-//Getter e Setters
-//exemplo tradicional de getter
-String get categoria{
-return _descricao;
-
-int? get codigo do produto => codigo do produto;
-int? get codigo categoria => codigo categoria;
-int? preco = preco;
-String? get nome => nome;
-String? get descricao => descricao;
+  //setters estilo dart
+  set codigo_do_produto(int? codigo_do_produto) =>
+      _codigo_do_produto = codigo_do_produto;
+  set codigo_categoria(int? codigo_categoria) =>
+      _codigo_categoria = codigo_categoria;
+  set preco(int? preco) => _preco = preco;
+  set nome(String? nome) => _nome = nome;
+  set descricao(String? descricao) => _descricao = descricao;
 }
-
-
-//setters tradicional
-set categoria(String? descricao){
-_descricao = descricao;
-
-}
-//setters estilo dart
-set codigo(int? codigo do produto) =>  _codigo do produto = codigo do produto;
-set codigo(int? codigo categoria) =>  _codigo categoria = codigo categoria;
-set preco(int? preco) => _preco = preco;
-set nome(String? nome) => _nome = nome;
-set descricao(String? descricao)=> _descricao = descricao;
-
-
