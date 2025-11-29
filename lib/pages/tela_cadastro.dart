@@ -168,7 +168,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                       obscureText: true,
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        hintText: '********',
+                        hintText: '****',
                         hintStyle: TextStyle(
                           color: Colors.white.withOpacity(0.8),
                         ),
@@ -209,7 +209,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                       obscureText: true,
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        hintText: '********',
+                        hintText: '****',
                         hintStyle: TextStyle(
                           color: Colors.white.withOpacity(0.8),
                         ),
@@ -268,4 +268,3 @@ class _TelaCadastroState extends State<TelaCadastro> {
     );
   }
 }
-
