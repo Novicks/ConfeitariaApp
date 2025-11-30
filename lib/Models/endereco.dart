@@ -43,8 +43,7 @@ class Endereco {
   int? get cep => _cep;
 
   // Setters
-  set codigo_endereco(int? codigo_endereco) =>
-      _codigo_endereco = codigo_endereco;
+  set codigo_endereco(int? codigoEndereco) => _codigo_endereco = codigoEndereco;
   set endereco(String? endereco) => _endereco = endereco;
   set rua(String? rua) => _rua = rua;
   set numero(int? numero) => _numero = numero;

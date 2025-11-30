@@ -1,3 +1,4 @@
+import 'package:confeitaria_app/pages/tela_recuperarsenha.dart';
 import 'package:confeitaria_app/temporario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen>
     _controller = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
-    )..repeat(reverse: true); //loop
+    )..repeat(reverse: true);
 
     _animation = Tween<Offset>(
       begin: const Offset(0, -10.0),
@@ -65,7 +66,6 @@ class _SplashScreenState extends State<SplashScreen>
             end: Alignment.bottomRight,
           ),
         ),
-        // Centralize o conteúdo
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
