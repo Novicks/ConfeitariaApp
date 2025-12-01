@@ -5,6 +5,7 @@ class PersonalizarPedidoPage extends StatefulWidget {
 
   @override
   State<PersonalizarPedidoPage> createState() => _PersonalizarPedidoPageState();
+
 }
 
 class _PersonalizarPedidoPageState extends State<PersonalizarPedidoPage> {
@@ -27,4 +28,10 @@ class _PersonalizarPedidoPageState extends State<PersonalizarPedidoPage> {
   "Creme belga chocolate",
   "Doce de leite",
   "Doce de leite c/ ameixa",
-  "Doce de leite c/ amendoim",
+  "Doce de leite c/ amendoim"];
+  Widget build(BuildContext context){
+    return Scaffold(
+
+    );
+  }
+}

@@ -1,3 +1,4 @@
+import 'package:confeitaria_app/pages/tela_recuperarsenha.dart';
 import 'package:flutter/material.dart';
 import 'package:confeitaria_app/pages/tela_cadastro.dart';
 import 'package:confeitaria_app/pages/tela_inicial.dart';
@@ -60,6 +61,15 @@ class Temp extends StatelessWidget {
                 );
               },
               child: const Text('Tela cadastro'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TelaRecuperarsenha()),
+                );
+              },
+              child: const Text('Tela recuperar senha'),
             ),
           ],
         ),
