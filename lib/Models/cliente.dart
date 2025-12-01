@@ -1,4 +1,4 @@
-class Usuario {
+class Cliente {
   int? _codigo;
   String? _nome;
   String? _email;
@@ -6,7 +6,7 @@ class Usuario {
   String? _telefone;
   int? _cpf;
 
-  Usuario({
+  Cliente({
     int? codigo,
     String? nome,
     String? email,
