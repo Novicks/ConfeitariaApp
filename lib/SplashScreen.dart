@@ -1,4 +1,3 @@
-import 'package:confeitaria_app/pages/tela_recuperarsenha.dart';
 import 'package:confeitaria_app/temporario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   _navigateToHome() async {
-    await Future.delayed(const Duration(milliseconds: 7000), () {});
+    await Future.delayed(const Duration(milliseconds: 5000), () {});
 
     Navigator.pushReplacement(
       context,
