@@ -222,8 +222,9 @@ class _TelaRecuperarsenha extends State<TelaRecuperarsenha> {
                             ),
                           ),
                           validator: (v) {
-                            if (v != _novaSenhaController.text)
+                            if (v != _novaSenhaController.text) {
                               return 'As senhas não coincidem';
+                            }
                             return null;
                           },
                         ),

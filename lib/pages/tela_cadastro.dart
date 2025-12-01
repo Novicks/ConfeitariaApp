@@ -14,7 +14,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
   final TextEditingController _nomeUsuarioController = TextEditingController();
   final TextEditingController _senhaController = TextEditingController();
   final TextEditingController _confirmarSenhaController =
-  TextEditingController();
+      TextEditingController();
 
   @override
   void dispose() {
@@ -27,7 +27,6 @@ class _TelaCadastroState extends State<TelaCadastro> {
 
   void _cadastrar() {
     if (_formKey.currentState!.validate()) {
-      // aqui depois você coloca para salvar no banco
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Cadastro realizado com sucesso!')),
       );
@@ -86,10 +85,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                     // ----- EMAIL -----
                     const Text(
                       'Email',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
@@ -124,10 +120,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                     // ----- NOME DE USUÁRIO -----
                     const Text(
                       'Nome de usuário',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
@@ -157,10 +150,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                     // ----- SENHA -----
                     const Text(
                       'Senha',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
@@ -198,10 +188,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                     // ----- CONFIRMAR SENHA -----
                     const Text(
                       'Confirma senha',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
@@ -240,9 +227,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                         onPressed: _cadastrar,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFF9A1A1),
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 16,
-                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
