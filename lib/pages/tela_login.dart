@@ -1,3 +1,5 @@
+import 'package:confeitaria_app/db/clienteDAO.dart';
+import 'package:confeitaria_app/pages/tela_inicial.dart';
 import 'package:flutter/material.dart';
 import 'tela_login.dart';
 
@@ -29,16 +31,16 @@ class TelaLogin extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
-                /* final sucesso = await ClienteDAO.autenticar(ClienteController.text, senhaController.text);
+                final sucesso = await ClienteDAO.autenticar(ClienteController.text, senhaController.text);
                 if (sucesso) {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TelaIncialOferta())
+                      MaterialPageRoute(builder: (context) => TelaInicial())
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text("Email ou senha inválidos!!"))
                   );
-                }*/
+                }
               },
               child: const Text('logar'),
             ),
