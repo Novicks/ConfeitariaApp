@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen>
     _controller = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
-    )..repeat(reverse: true); //loop
+    )..repeat(reverse: true);
 
     _animation = Tween<Offset>(
       begin: const Offset(0, -10.0),
@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   _navigateToHome() async {
-    await Future.delayed(const Duration(milliseconds: 7000), () {});
+    await Future.delayed(const Duration(milliseconds: 5000), () {});
 
     Navigator.pushReplacement(
       context,
@@ -65,7 +65,6 @@ class _SplashScreenState extends State<SplashScreen>
             end: Alignment.bottomRight,
           ),
         ),
-        // Centralize o conteúdo
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

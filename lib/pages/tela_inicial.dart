@@ -2,7 +2,6 @@ import 'package:confeitaria_app/pages/tela_incialConta.dart';
 import 'package:confeitaria_app/pages/tela_incialOfertas.dart';
 import 'package:confeitaria_app/pages/tela_inicialCompras.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TelaInicial extends StatefulWidget {
