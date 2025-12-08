@@ -4,7 +4,7 @@ import 'package:confeitaria_app/models/cliente.dart';
 class ClienteDAO {
   static Cliente clienteLogado = Cliente();
 
-  static Future<bool> autenticar(String email, String senha) async {
+  static Future<Cliente?> autenticar(String email, String senha) async {
     final db = await DatabaseHelper.getDatabase();
     final resultado = await db.query(
       'cliente',
@@ -12,12 +12,17 @@ class ClienteDAO {
       whereArgs: [email, senha],
     );
 
+    if(resultado.isEmpty){
+      return null;
+    }
+
+    final map = resultado.first;
     // adicionar usuario logado depois
-    clienteLogado.codigo = resultado.first['id_cliente'] as int;
-    clienteLogado.nome = resultado.first['nome'] as String;
-    clienteLogado.cpf = resultado.first['email'] as int;
-    clienteLogado.telefone = resultado.first['n'] as String;
-    clienteLogado.email = resultado.first['nome'] as String;
-    return resultado.isNotEmpty;
+    clienteLogado.codigo = map['id_cliente'] as int;
+    clienteLogado.nome = map['nome'] as String;
+    clienteLogado.email = map['email'] as String;
+    clienteLogado.cpf = map['cpf'] as String;
+    clienteLogado.telefone = map['telefone'] as String;
+    return clienteLogado;
   }
 }

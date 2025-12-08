@@ -1,4 +1,7 @@
+import 'package:confeitaria_app/Models/cliente.dart';
+import 'package:confeitaria_app/db/clienteDAO.dart';
 import 'package:confeitaria_app/pages/tela_cadastro.dart';
+import 'package:confeitaria_app/pages/tela_inicial.dart';
 import 'package:flutter/material.dart';
 import 'package:confeitaria_app/pages/tela_recuperarsenha.dart';
 
@@ -28,13 +31,19 @@ class _TelaLoginState extends State<TelaLogin> {
     _senhaController.dispose();
   }
 
-  void _login() {
-    if (_formKey.currentState!.validate()) {
+  void _login() async{
+    final sucesso = await ClienteDAO.autenticar(_emailController.text, _senhaController.text);
+    if (_formKey.currentState!.validate() && sucesso!=null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Login realizado com sucesso!')),
       );
+      Navigator.push(context, MaterialPageRoute(builder: (context) => TelaInicial()));
       // Lógica de login aqui (Firebase, API, etc)
       // Navigator.pop(context);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Senha ou email inválidos!')),
+      );
     }
   }
 
