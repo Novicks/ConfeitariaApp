@@ -3,7 +3,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 
-class DBHelper {
+/*class DBHelper {
   static final DBHelper instance = DBHelper._internal();
   static Database? _db;
 
@@ -54,4 +54,4 @@ await DBHelper.instance.insertPedido({
 'message': mensagem,
 'notes': observacoes,
 'price': preco,
-});
+});*/
