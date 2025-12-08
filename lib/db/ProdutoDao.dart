@@ -34,7 +34,7 @@ class ProdutoDAO {
     return Produto(
       codigo_do_produto: resultado.first['cd_produto'] as int,
       nome: resultado.first['nm_produto'] as String,
-      codigo_categoria: await TipoDAO.listar(resultado.first['cd_tipo'] as int),
+      //codigo_categoria: await TipoDAO.listar(resultado.first['cd_tipo'] as int),
 
     );
 

@@ -10,6 +10,8 @@ class TelaCadastro extends StatefulWidget {
 class _TelaCadastroState extends State<TelaCadastro> {
   final _formKey = GlobalKey<FormState>();
 
+  final TextEditingController _cpfController = TextEditingController();
+  final TextEditingController _telefoneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _nomeUsuarioController = TextEditingController();
   final TextEditingController _senhaController = TextEditingController();
@@ -116,7 +118,88 @@ class _TelaCadastroState extends State<TelaCadastro> {
                       },
                     ),
                     const SizedBox(height: 16),
+                    // ----- CPF DO CLIENTE -----
+                    SizedBox(
+                      child: Row(
+                        children: [
+                          Expanded(child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'CPF',
+                                  style: TextStyle(fontSize: 16, color: Colors.white),
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              TextFormField(
+                                controller: _cpfController,
+                                style: const TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                  hintText: '123.456.789-00',
+                                  hintStyle: TextStyle(
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.white.withOpacity(0.25),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                                validator: (value) {
+                                  if (value == null || value.trim().isEmpty && value.length != 11) {
+                                    return 'Informe o cpf';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ],
+                          )),
+                          const SizedBox(width: 8),
+                          // ----- TELEFONE DO USUARIO -----
+                          Expanded(child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Telefone',
+                                  style: TextStyle(fontSize: 16, color: Colors.white),
+                                ),
+                              ),
 
+                              const SizedBox(height: 8),
+                              TextFormField(
+                                controller: _telefoneController,
+                                style: const TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                  hintText: '(DD) 12345678',
+                                  hintStyle: TextStyle(
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.white.withOpacity(0.25),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                                validator: (value) {
+                                  if (value == null || value.trim().isEmpty && value.length < 8) {
+                                    return 'Informe o numero de telefone com DD.';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ],
+                          ))
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
                     // ----- NOME DE USUÁRIO -----
                     const Text(
                       'Nome de usuário',
