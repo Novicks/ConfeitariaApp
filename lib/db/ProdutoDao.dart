@@ -1,4 +1,6 @@
+import 'package:confeitaria_app/Models/categoria.dart';
 import 'package:confeitaria_app/Models/produto.dart';
+import 'package:confeitaria_app/db/CategoriaDao.dart';
 import 'package:confeitaria_app/db/clienteDAO.dart';
 import 'package:confeitaria_app/db/databaseHelper.dart';
 
@@ -8,7 +10,7 @@ class ProdutoDAO {
   static Future<void> atualizarProduto(
       int? cd,
       String? nome,
-      int? tipo
+      int? categoria
 
       ) async{
     final db = await DatabaseHelper.getDatabase();
@@ -16,7 +18,7 @@ class ProdutoDAO {
     final resultado = await db.update('tb_produto',
         {
           'nm_produto': nome,
-          'cd_tipo': tipo
+          'cd_categoria': categoria
         },
         where: 'cd_produto = ?',
         whereArgs: [cd]
@@ -34,7 +36,7 @@ class ProdutoDAO {
     return Produto(
       codigo_do_produto: resultado.first['cd_produto'] as int,
       nome: resultado.first['nm_produto'] as String,
-      codigo_categoria: await TipoDAO.listar(resultado.first['cd_tipo'] as int),
+      codigo_categoria: await CategoriaDAO.listar(resultado.first['categoria_dao'] as int),
 
     );
 
@@ -64,11 +66,11 @@ class ProdutoDAO {
 
   static Future<int> cadastrarProduto (
       String? nome,
-      int? tipo
+      int? categoria,
       ) async{
     final db = await DatabaseHelper.getDatabase();
     final dadosProduto = {
-      'cd_tipo': tipo,
+      'cd_categoria': categoria,
       'nm_produto': nome,
       'cd_cliente': ClienteDAO.clienteLogado.codigo
     };
