@@ -10,7 +10,7 @@ class CategoriaDAO{
 
     return resultado.map((mapa){
       return Categoria(
-          codigo_do_produto: mapa['cd_categoria'] as int,
+          id: mapa['cd_categoria'] as int,
           descricao: mapa['nm_categoria'] as String
       );
     }).toList();
@@ -23,7 +23,7 @@ class CategoriaDAO{
         whereArgs: [id]
     );
     return Categoria(
-        codigo_do_produto: resultado.first['cd_categoria'] as int,
+        id: resultado.first['cd_categoria'] as int,
         descricao: resultado.first['nm_categoria'] as String
     );
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../db/clienteDAO.dart';
+import '../Models/cliente.dart';
 
 class TelaCadastro extends StatefulWidget {
   const TelaCadastro({super.key});
@@ -27,12 +29,24 @@ class _TelaCadastroState extends State<TelaCadastro> {
     super.dispose();
   }
 
-  void _cadastrar() {
+  Future<void> _cadastrar() async {
     if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Cadastro realizado com sucesso!')),
-      );
-      Navigator.pop(context); // volta para a tela de login
+      //aqui vem o código que usa o metodo cadatrar da classe ClienteDAO
+      int novo = await ClienteDAO.cadastrarCliente(_nomeUsuarioController.text, _emailController.text, _senhaController.text, _confirmarSenhaController.text, _telefoneController.text, _cpfController.text);
+
+      if(novo > 0){ //cadastrou
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Cadastro realizado com sucesso!')),
+        );
+        // volta para a tela de login
+        Navigator.pop(context);
+
+      }else { //nao cadastrou
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Erro ao cadastrar: ")),
+        );
+      }
+
     }
   }
 
@@ -324,6 +338,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                             color: Colors.white,
                           ),
                         ),
+
                       ),
                     ),
                   ],

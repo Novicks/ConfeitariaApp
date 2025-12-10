@@ -32,11 +32,12 @@ class ProdutoDAO {
         where: 'cd_produto = ?',
         whereArgs: [id]
     );
+    Categoria catEncontrada = await CategoriaDAO.listar(resultado.first['categoria_dao'] as int);
 
     return Produto(
       codigo_do_produto: resultado.first['cd_produto'] as int,
       nome: resultado.first['nm_produto'] as String,
-      codigo_categoria: await CategoriaDAO.listar(resultado.first['categoria_dao'] as int),
+      codigo_categoria: catEncontrada.id,
 
     );
 

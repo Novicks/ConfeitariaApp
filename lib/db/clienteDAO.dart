@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:confeitaria_app/db/databaseHelper.dart';
 import 'package:confeitaria_app/models/cliente.dart';
 import 'dart:convert';
@@ -33,6 +35,7 @@ class ClienteDAO {
   }
   static Future<int> cadastrarCliente(String? nome, String? email, String? senha_hash, String? senha_hashC, String? telefone, String? cpf) async{
     final db = await DatabaseHelper.getDatabase();
+    int retorno = -1;
     if(senha_hash == senha_hashC){
       final dadosDeCadastro = {
         'nome': nome,
@@ -41,16 +44,18 @@ class ClienteDAO {
         'telefone': telefone,
         'cpf':cpf,
         'data_cadastro': DateTime.now().toString(),
-        'ativo': 1
+        'ativo': 'ativo'
       };
+
       try{
         final idCliente = await db.insert('cliente', dadosDeCadastro);
-        return idCliente;
+        retorno= idCliente;
       }catch(e){
         print("Erro ao cadastrar Cliente: $e");
-        return -1;
+        retorno= -1;
       }
     }
+    return retorno;
   }
 
 }
