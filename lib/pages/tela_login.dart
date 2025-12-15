@@ -37,6 +37,7 @@ class _TelaLoginState extends State<TelaLogin> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Login realizado com sucesso!')),
       );
+      ClienteDAO.salvarClienteLogado();
       Navigator.push(context, MaterialPageRoute(builder: (context) => TelaInicial()));
       // Lógica de login aqui (Firebase, API, etc)
       // Navigator.pop(context);

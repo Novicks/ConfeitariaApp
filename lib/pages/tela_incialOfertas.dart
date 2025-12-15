@@ -278,7 +278,10 @@ class _TelaIncialOfertaState extends State<TelaIncialOferta> {
           Expanded(child:
             Row(
               children: [
-                ElevatedButton(onPressed: (){}, child: Text("nome do produto"))
+                Text('${produto.preco}'),
+                ElevatedButton(onPressed: (){
+                  ProdutoDAO.itensPedidos(produto, 1);
+                }, child: Text("${produto.nome}"))
               ],
             ), flex: 2,)
         ],)

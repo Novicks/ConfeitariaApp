@@ -1,21 +1,13 @@
+import 'package:confeitaria_app/Models/ProdutoCarrinho.dart';
+import 'package:confeitaria_app/Models/itens_pedido.dart';
+import 'package:confeitaria_app/Models/produto.dart';
+import 'package:confeitaria_app/db/ProdutoDao.dart';
 import 'package:confeitaria_app/pages/tela_incialOfertas.dart';
 import 'package:confeitaria_app/pages/tela_inicial.dart';
 import 'package:confeitaria_app/pages/tela_pagamento.dart';
 import 'package:flutter/material.dart';
 
 // 1. Classe auxiliar para representar um produto com preço e quantidade
-class ProdutoCarrinho {
-  final String nome;
-  final double preco;
-  int quantidade;
-
-  ProdutoCarrinho({
-    required this.nome,
-    required this.preco,
-    this.quantidade = 1,
-  });
-}
-
 class TelaIncialCompras extends StatefulWidget {
   const TelaIncialCompras({super.key});
 
@@ -24,7 +16,6 @@ class TelaIncialCompras extends StatefulWidget {
 }
 
 class _TelaIncialComprasState extends State<TelaIncialCompras> {
-  late List<ProdutoCarrinho> listaProdutos;
 
   // --- PALETA DE CORES (Baseada na Tela de Pagamento) ---
   final Color corFundo = const Color(0xFFFFF8F3); // Bege Fundo 0xFFFFF8F3
@@ -32,34 +23,17 @@ class _TelaIncialComprasState extends State<TelaIncialCompras> {
   final Color corContainerTotal = const Color(0xFFAB9D8F); // Marrom Container
   final Color corBotaoPagar = const Color(0xFFC0C5CA); // Cinza/Prata Botão
   final Color corIconeImagem = const Color(0xFF1A1A1A); // Preto suave para placeholder
-
+  late Future<List<ProdutoCarrinho>> _futureProduto;
+  double total = 0;
   @override
   void initState() {
     super.initState();
-    final nomes = [
-      "Bolo de chocolate com confetes",
-      "Torta de limão",
-      "Doce de maracuja",
-      "Brigadeiro",
-      "Beijinho",
-      "Gelatina fini Incriveis",
-      "Salgadinhos",
-      "Panetone recheado com frutas cristalizadas",
-      "Bolo de cenoura",
-    ];
-
-    listaProdutos = nomes.map((nome) {
-      return ProdutoCarrinho(nome: nome, preco: 12.50); // Preço base fictício
-    }).toList();
+    _futureProduto = ProdutoDAO.listarCarrinho();
+    /*listaProdutos = nomes.map((nome) {
+      return Produto(nome: nome, preco: 12.50); // Preço base fictício
+    }).toList();*/
   }
 
-  // Função para calcular o total
-  double get valorTotal {
-    return listaProdutos.fold(
-      0,
-      (soma, item) => soma + (item.preco * item.quantidade),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,12 +74,33 @@ class _TelaIncialComprasState extends State<TelaIncialCompras> {
           children: [
             // --- LISTA DE PRODUTOS ---
             Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                itemCount: listaProdutos.length,
-                itemBuilder: (context, index) {
-                  final item = listaProdutos[index];
-                  return _buildCartItem(item);
+              child: FutureBuilder<List<ProdutoCarrinho>>(
+                future: _futureProduto,
+                builder: (context, snapshot){
+                  if(snapshot.connectionState == ConnectionState.waiting){
+                    return const Center(child: CircularProgressIndicator(),);
+                  }
+                  if(snapshot.hasError){
+                    return const Center(child: Text('Erro ao carregar carrinho'),);
+                  }
+                  final carrinho = snapshot.data?? [];
+                  if (carrinho.isEmpty){
+                    return const Center(child: Text('Carrinho vazio'),);
+                  }
+
+                  try {
+                  } catch (e, s) {
+                    print(s);
+                  }
+                  total = carrinho.fold(0, (soma, item) => soma + item.subtotal);
+
+                  return ListView.builder(
+                    padding: const EdgeInsets.all(20),
+                    itemCount: carrinho.length,
+                    itemBuilder: (context, index){
+                      return _buildCartItem(carrinho[index]);
+                    }
+                  );
                 },
               ),
             ),
@@ -141,7 +136,7 @@ class _TelaIncialComprasState extends State<TelaIncialCompras> {
                         ),
                       ),
                       Text(
-                        "R\$ ${valorTotal.toStringAsFixed(2)}",
+                        "R\$ ${total.toString()}",
                         style: const TextStyle(
                           fontSize: 28,
                           color: Colors.white,
@@ -226,7 +221,7 @@ class _TelaIncialComprasState extends State<TelaIncialCompras> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  item.nome,
+                  item.p.nome.toString(),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
@@ -237,7 +232,7 @@ class _TelaIncialComprasState extends State<TelaIncialCompras> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  "Unit: R\$ ${item.preco.toStringAsFixed(2)}",
+                  "Unit: R\$ ${item.p.preco.toString()}",
                   style: const TextStyle(fontSize: 13, color: Colors.white70),
                 ),
                 const SizedBox(height: 8),

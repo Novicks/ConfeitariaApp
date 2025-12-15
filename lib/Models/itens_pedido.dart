@@ -1,7 +1,9 @@
+import 'package:confeitaria_app/Models/cliente.dart';
+
 class ItensPedido {
   int? _idItemPedido;
-  int? _idPedido;
-  String? _idProduto;
+  Cliente? _idCliente;
+  int? _idProduto;
   int? _quantidade;
   double? _precoUnitario;
   double? _subTotalItem;
@@ -9,13 +11,13 @@ class ItensPedido {
   // Construtor
   ItensPedido({
     int? idItemPedido,
-    int? idPedido,
-    String? idProduto,
+    int? idCliente,
+    int? idProduto,
     int? quantidade,
     double? precoUnitario,
   }) {
     _idItemPedido = idItemPedido;
-    _idPedido = idPedido;
+    _idCliente?.codigo = idCliente;
     _idProduto = idProduto;
     _quantidade = quantidade;
     _precoUnitario = precoUnitario;
@@ -25,17 +27,17 @@ class ItensPedido {
 
   // Getters
   int? get idItemPedido => _idItemPedido;
-  int? get idPedido => _idPedido;
-  String? get idProduto => _idProduto;
+  int? get id => _idCliente?.codigo;
+  int? get idProduto => _idProduto;
   int? get quantidade => _quantidade;
   double? get precoUnitario => _precoUnitario;
   double? get subTotalItem => _subTotalItem;
 
   // Setters
   set idItemPedido(int? valor) => _idItemPedido = valor;
-  set idPedido(int? valor) => _idPedido = valor;
+  set idCliente(int? valor) => _idCliente?.codigo = valor;
 
-  set idProduto(String? valor) {
+  set idProduto(int? valor) {
     _idProduto = valor;
   }
 

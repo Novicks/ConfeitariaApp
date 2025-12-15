@@ -8,10 +8,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ClienteDAO {
   static Cliente clienteLogado = Cliente();
 
-  static Future<void> salvarClienteLogado(int clienteID) async{
+  static Future<void> salvarClienteLogado() async{
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('EstaLogado', true);
-    await prefs.setInt('clienteID', clienteID);
+    await prefs.setInt('clienteID', clienteLogado.codigo ?? 0);
   }
 
   static Future<bool> clientePresente() async{
@@ -67,7 +67,7 @@ class ClienteDAO {
 
       try{
         final idCliente = await db.insert('cliente', dadosDeCadastro);
-        retorno= idCliente;
+        retorno = idCliente;
       }catch(e){
         print("Erro ao cadastrar Cliente: $e");
         retorno= -1;
