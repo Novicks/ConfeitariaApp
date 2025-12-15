@@ -25,17 +25,26 @@ class _TelaInicialState extends State<TelaInicial> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: listadePaginas[indexBar],
-      bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.transparent,
-        height: 60,
-        index: indexBar,
-        items: items,
-        onTap: (index) => setState(() {
-          indexBar = index;
-        }),
-      ),
+    return Container(
+      child: SafeArea(
+        top: false,
+        child: ClipRect(
+          child:Scaffold(
+            backgroundColor: Color(0xFFFFF8F3),
+            body: listadePaginas[indexBar],
+            bottomNavigationBar: CurvedNavigationBar(
+              backgroundColor: Colors.transparent,
+              animationCurve: Curves.easeInOut,
+              animationDuration: Duration(milliseconds: 700),
+              height: 60,
+              index: indexBar,
+              items: items,
+              onTap: (index) => setState(() {
+                indexBar = index;
+              }),
+            ),
+          ),
+        ) )
     );
   }
 }

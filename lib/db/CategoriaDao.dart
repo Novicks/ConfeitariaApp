@@ -3,28 +3,17 @@ import 'package:confeitaria_app/db/databaseHelper.dart';
 
 class CategoriaDAO{
 
-  static Future<List<Categoria>> listarTipos() async{
+  static Future<List<Categoria>> listarCategoria() async{
 
     final db = await DatabaseHelper.getDatabase();
-    final resultado = await db.query('tb_categoria');
+    final resultado = await db.query('categorias_produto');
 
     return resultado.map((mapa){
       return Categoria(
-          id: mapa['cd_categoria'] as int,
-          descricao: mapa['nm_categoria'] as String
+          id: mapa['id_categoria'] as int,
+          nome : mapa['nome']?.toString() as String,
+          descricao: mapa['descricao']?.toString() as String
       );
     }).toList();
-  }
-
-  static Future<Categoria> listar(int? id) async{
-    final db = await DatabaseHelper.getDatabase();
-    final resultado = await db.query('tb_categoria',
-        where: 'cd_categoria = ?',
-        whereArgs: [id]
-    );
-    return Categoria(
-        id: resultado.first['cd_categoria'] as int,
-        descricao: resultado.first['nm_categoria'] as String
-    );
   }
 }

@@ -27,7 +27,7 @@ class _TelaIncialComprasState extends State<TelaIncialCompras> {
   late List<ProdutoCarrinho> listaProdutos;
 
   // --- PALETA DE CORES (Baseada na Tela de Pagamento) ---
-  final Color corFundo = const Color(0xFFEBCDA0); // Bege Fundo
+  final Color corFundo = const Color(0xFFFFF8F3); // Bege Fundo 0xFFFFF8F3
   final Color corCard = const Color(0xFFF6Bcb3); // Rosa Card
   final Color corContainerTotal = const Color(0xFFAB9D8F); // Marrom Container
   final Color corBotaoPagar = const Color(0xFFC0C5CA); // Cinza/Prata Botão
@@ -66,7 +66,7 @@ class _TelaIncialComprasState extends State<TelaIncialCompras> {
     return Scaffold(
       backgroundColor: corFundo, // Fundo Bege
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xFFEBCDA0),
         elevation: 0,
         centerTitle: true,
         title: const Text(
